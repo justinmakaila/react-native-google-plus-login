@@ -1,12 +1,22 @@
-var React = require('React')
+var {
+  DeviceEventEmitter,
+  NativeModules: {
+    GooglePlusLoginManager,
+  },
+  PropTypes,
+} = require('react-native');
+
 var ReactNativeViewAttributes = require('ReactNativeViewAttributes')
-var PropTypes = require('ReactPropTypes')
 var createReactNativeComponentClass = require('createReactNativeComponentClass')
-var GooglePlusLoginManager = require('NativeModules').RCTGooglePlusLoginManager
+
 
 var GooglePlusLogin = React.createClass({
+  statics: {
+    Events: GooglePlusLoginManager.Events,
+  },
+
   propTypes: {
-    permissions: PropTypes.array,
+    clientId: PropTypes.string,
     onLogin: PropTypes.func,
     onLogout: PropTypes.func,
     onLoginFound: PropTypes.func,
@@ -19,15 +29,36 @@ var GooglePlusLogin = React.createClass({
   getInitialState: function () {
     return {
       credentials: null,
+      subscriptions: [],
     }
   },
 
   componentWillMount: function () {
-    // TODO: Create a listener and call the event handler from props for each event supplied by the GooglePlusLoginManager
+    var _this = this
+    var subscriptions = _this.state.subscriptions
+    var events = GooglePlusLoginManager.Events
+
+    // Create a listener and call the event handler from props for each event supplied by the GooglePlusLoginManager
+    Object.keys(events).forEach(function (event) {
+      const subscription = DeviceEventEmitter.addListener(events[event], (eventData) => {
+        var eventHandler = _this.props["on" + event]
+        eventHandler && eventHandler(eventData)
+      })
+
+      subscriptions.push(subscription)
+    })
+
+    // Set the subscriptions
+    this.setState({ subscriptions: subscriptions })
   },
 
   componentWillUnmount: function () {
-    // TODO: Remove each listener
+    // Remove each listener
+    var subscriptions = this.state.subscriptions
+
+    subscriptions.forEach(function (subscription) {
+      subscription.remove()
+    })
   },
 
   componentDidMount: function() {
@@ -35,8 +66,13 @@ var GooglePlusLogin = React.createClass({
   },
 
   render: function() {
-    return <RCTGooglePlusLogin {...props} />
-  }
+    console.log(this.props)
+    console.log(GooglePlusLoginManager)
+    GooglePlusLoginManager.setClientId(this.props.clientId)
+    //GooglePlusLoginManager.setClienId(this.props.clientId)
+
+    return <RCTGooglePlusLogin {...this.props} />
+  },
 })
 
 var RCTGooglePlusLogin = createReactNativeComponentClass({
@@ -44,7 +80,7 @@ var RCTGooglePlusLogin = createReactNativeComponentClass({
     ...ReactNativeViewAttributes.UIView,
     permissions: true,
   },
-  uiViewClassName: 'RCTGooglePlusLogin'
+  uiViewClassName: 'RCTGooglePlusLogin',
 })
 
 module.exports = GooglePlusLogin

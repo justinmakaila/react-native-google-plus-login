@@ -11,6 +11,17 @@
 		7CECB50E1B57EFD700B6A8A2 /* RCTGooglePlusLoginButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CECB50D1B57EFD700B6A8A2 /* RCTGooglePlusLoginButton.m */; };
 		7CECB5131B57F2CC00B6A8A2 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CECB5101B57F2CC00B6A8A2 /* GoogleOpenSource.framework */; };
 		7CECB5141B57F2CD00B6A8A2 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CECB5121B57F2CC00B6A8A2 /* GooglePlus.framework */; };
+		7CECB5331B58089500B6A8A2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CECB5321B58089500B6A8A2 /* CoreLocation.framework */; };
+		7CECB5351B58089A00B6A8A2 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CECB5341B58089A00B6A8A2 /* CoreMotion.framework */; };
+		7CECB5371B58089D00B6A8A2 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CECB5361B58089D00B6A8A2 /* AddressBook.framework */; };
+		7CECB5391B5808A200B6A8A2 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CECB5381B5808A200B6A8A2 /* AssetsLibrary.framework */; };
+		7CECB53B1B5808A600B6A8A2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CECB53A1B5808A600B6A8A2 /* UIKit.framework */; };
+		7CECB53D1B5808AE00B6A8A2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CECB53C1B5808AE00B6A8A2 /* Foundation.framework */; };
+		7CECB53F1B5808D200B6A8A2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CECB53E1B5808D200B6A8A2 /* CoreGraphics.framework */; };
+		7CECB5411B5808D600B6A8A2 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CECB5401B5808D600B6A8A2 /* CoreText.framework */; };
+		7CECB5431B5808E000B6A8A2 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CECB5421B5808E000B6A8A2 /* MediaPlayer.framework */; };
+		7CECB5451B5808E500B6A8A2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CECB5441B5808E500B6A8A2 /* Security.framework */; };
+		7CECB5471B5808ED00B6A8A2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CECB5461B5808ED00B6A8A2 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +45,17 @@
 		7CECB5101B57F2CC00B6A8A2 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = "google-plus-sdk/GoogleOpenSource.framework"; sourceTree = "<group>"; };
 		7CECB5111B57F2CC00B6A8A2 /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = "google-plus-sdk/GooglePlus.bundle"; sourceTree = "<group>"; };
 		7CECB5121B57F2CC00B6A8A2 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = "google-plus-sdk/GooglePlus.framework"; sourceTree = "<group>"; };
+		7CECB5321B58089500B6A8A2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		7CECB5341B58089A00B6A8A2 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		7CECB5361B58089D00B6A8A2 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		7CECB5381B5808A200B6A8A2 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		7CECB53A1B5808A600B6A8A2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7CECB53C1B5808AE00B6A8A2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7CECB53E1B5808D200B6A8A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7CECB5401B5808D600B6A8A2 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		7CECB5421B5808E000B6A8A2 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		7CECB5441B5808E500B6A8A2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		7CECB5461B5808ED00B6A8A2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +63,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CECB5471B5808ED00B6A8A2 /* SystemConfiguration.framework in Frameworks */,
+				7CECB5451B5808E500B6A8A2 /* Security.framework in Frameworks */,
+				7CECB5431B5808E000B6A8A2 /* MediaPlayer.framework in Frameworks */,
+				7CECB5411B5808D600B6A8A2 /* CoreText.framework in Frameworks */,
+				7CECB53F1B5808D200B6A8A2 /* CoreGraphics.framework in Frameworks */,
+				7CECB53D1B5808AE00B6A8A2 /* Foundation.framework in Frameworks */,
+				7CECB53B1B5808A600B6A8A2 /* UIKit.framework in Frameworks */,
+				7CECB5391B5808A200B6A8A2 /* AssetsLibrary.framework in Frameworks */,
+				7CECB5371B58089D00B6A8A2 /* AddressBook.framework in Frameworks */,
+				7CECB5351B58089A00B6A8A2 /* CoreMotion.framework in Frameworks */,
+				7CECB5331B58089500B6A8A2 /* CoreLocation.framework in Frameworks */,
 				7CECB5131B57F2CC00B6A8A2 /* GoogleOpenSource.framework in Frameworks */,
 				7CECB5141B57F2CD00B6A8A2 /* GooglePlus.framework in Frameworks */,
 			);
@@ -64,6 +97,17 @@
 		7CECB50F1B57F2BE00B6A8A2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7CECB5461B5808ED00B6A8A2 /* SystemConfiguration.framework */,
+				7CECB5441B5808E500B6A8A2 /* Security.framework */,
+				7CECB5421B5808E000B6A8A2 /* MediaPlayer.framework */,
+				7CECB5401B5808D600B6A8A2 /* CoreText.framework */,
+				7CECB53E1B5808D200B6A8A2 /* CoreGraphics.framework */,
+				7CECB53C1B5808AE00B6A8A2 /* Foundation.framework */,
+				7CECB53A1B5808A600B6A8A2 /* UIKit.framework */,
+				7CECB5381B5808A200B6A8A2 /* AssetsLibrary.framework */,
+				7CECB5361B58089D00B6A8A2 /* AddressBook.framework */,
+				7CECB5341B58089A00B6A8A2 /* CoreMotion.framework */,
+				7CECB5321B58089500B6A8A2 /* CoreLocation.framework */,
 				7CECB5101B57F2CC00B6A8A2 /* GoogleOpenSource.framework */,
 				7CECB5111B57F2CC00B6A8A2 /* GooglePlus.bundle */,
 				7CECB5121B57F2CC00B6A8A2 /* GooglePlus.framework */,

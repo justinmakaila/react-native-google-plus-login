@@ -71,8 +71,10 @@
 #pragma mark - Setup
 
 - (void)setup {
-  _signInButton = [[GPPSignInButton alloc] init];
-  [self addSubview:_signInButton];
+  if (!_signInButton) {
+    _signInButton = [[GPPSignInButton alloc] init];
+    [self addSubview:_signInButton];
+  }
 }
 
 @end

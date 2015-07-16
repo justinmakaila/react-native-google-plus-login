@@ -18,19 +18,15 @@
 
 static NSString * const LoginEvent = @"Login";
 static NSString * const LoginFoundEvent = @"LoginFound";
-static NSString * const LogoutEvent = @"Logout";
 static NSString * const LoginErrorEvent = @"LoginError";
-static NSString * const LoginCancelEvent = @"LoginCancel";
 
 static NSString * const GooglePlusLoginSuccessEvent = @"GooglePlusLoginSuccessEvent";
 static NSString * const GooglePlusLoginFoundEvent = @"GooglePlusLoginFoundEvent";
-static NSString * const GooglePlusLogoutEvent = @"GooglePlusLogoutEvent";
 static NSString * const GooglePlusLoginErrorEvent = @"GooglePlusLoginErrorEvent";
-static NSString * const GooglePlusLoginCancelEvent = @"GooglePlusLoginCancelEvent";
 
 @interface RCTGooglePlusLoginManager ()
 
-@property (strong, nonatomic) NSArray *permissions;
+@property (strong, nonatomic) NSString *clientId;
 @property (strong, nonatomic) RCTResponseSenderBlock completion;
 
 @end
@@ -38,6 +34,16 @@ static NSString * const GooglePlusLoginCancelEvent = @"GooglePlusLoginCancelEven
 @implementation RCTGooglePlusLoginManager
 
 @synthesize bridge = _bridge;
+@synthesize methodQueue = _methodQueue;
+
+- (id)init {
+  if (self = [super init]) {
+    [self setupSignInProxy];
+
+  }
+  
+  return self;
+}
 
 - (UIView *)view {
   return [[RCTGooglePlusLoginButton alloc] init];
@@ -64,9 +70,7 @@ RCT_EXPORT_MODULE()
   NSDictionary *events = @{
     LoginEvent: GooglePlusLoginSuccessEvent,
     LoginErrorEvent: GooglePlusLoginErrorEvent,
-    LoginCancelEvent: GooglePlusLoginCancelEvent,
     LoginFoundEvent: GooglePlusLoginFoundEvent,
-    LogoutEvent: GooglePlusLogoutEvent
   };
   
   return @{
@@ -83,20 +87,37 @@ RCT_EXPORT_MODULE()
   [self.bridge.eventDispatcher sendDeviceEventWithName:eventName body:[NSMutableDictionary dictionaryWithDictionary:data]];
 }
 
-RCT_EXPORT_METHOD(loginWithClientId:(NSString *)clientId completion:(RCTResponseSenderBlock)completion) {
-    [self loginWithPermissions:self.permissions clientId:clientId completion:completion];
+RCT_EXPORT_METHOD(login:(RCTResponseSenderBlock)completion) {
+  [[GPPSignIn sharedInstance] authenticate];
 }
 
-RCT_EXPORT_METHOD(loginWithPermissions:(NSArray *)permissions clientId:(NSString *)clientId completion:(RCTResponseSenderBlock)completion) {
-  GPPSignIn *signIn = [GPPSignIn sharedInstance];
-  signIn.shouldFetchGooglePlusUser = YES;
-  signIn.clientID = clientId;
+RCT_EXPORT_METHOD(setClientId:(NSString *)clientId) {
+  _clientId = clientId;
+  [self setupSignInProxy];
+}
 
-  signIn.scopes = @[kGTLAuthScopePlusLogin, @"profile"];
+RCT_EXPORT_METHOD(loadCredentials:(RCTResponseSenderBlock)completion) {
+  GTMOAuth2Authentication *authData = [[GPPSignIn sharedInstance] authentication];
+  if (authData) {
+    [self fireEvent:LoginFoundEvent withData:authData.properties];
+    completion(@[[NSNull null], authData]);
+  }
+  else {
+    [self fireEvent:LoginErrorEvent withData:@{ @"description": @"Could not load credentials" }];
+    completion(@[@"Could not load credentials"]);
+  }
+}
 
-  signIn.delegate = self;
+#pragma mark - Setup
+
+- (void)setupSignInProxy {
+  GPPSignIn *signInProxy = [GPPSignIn sharedInstance];
+  signInProxy.delegate = self;
   
-  [signIn authenticate];
+  signInProxy.shouldFetchGooglePlusUser = YES;
+  signInProxy.clientID = self.clientId;
+  
+  signInProxy.scopes = @[kGTLAuthScopePlusLogin, @"profile"];
 }
 
 @end

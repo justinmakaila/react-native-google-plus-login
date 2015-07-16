@@ -1,6 +1,7 @@
 {
-  "name": "RCTGooglePlusLogin",
+  "name": "react-native-google-plus-login",
   "version": "0.0.1",
+  "main": "GooglePlusLogin.ios.js",
   "scripts": {
     "start": "node_modules/react-native/packager/packager.sh"
   },
