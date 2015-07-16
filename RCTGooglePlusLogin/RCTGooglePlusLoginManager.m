@@ -50,15 +50,21 @@ static NSString * const GooglePlusLoginErrorEvent = @"GooglePlusLoginErrorEvent"
 }
 
 - (void)finishedWithAuth:(GTMOAuth2Authentication *)auth error:(NSError *)error {
+  id errorObject = (error) ? error : [NSNull null];
+  id authData = [NSNull null];
+  
+  if (error) {
+    [self fireEvent:LoginErrorEvent withData:@{ @"description": error.localizedDescription }];
+  }
+  else {
+    // Convert GTMOAuth2Authentication into a JSON object
+    authData = auth.parameters;
+    
+    [self fireEvent:LoginEvent withData:authData];
+  }
+  
   if (self.completion) {
-    if (error) {
-      [self fireEvent:LoginErrorEvent withData:@{ @"description": error.localizedDescription }];
-      self.completion(@[error]);
-    }
-    else {
-      [self fireEvent:LoginEvent withData:auth.properties];
-      self.completion(@[[NSNull null], auth.properties]);
-    }
+    self.completion(@[errorObject, authData]);
   }
     
   self.completion = nil;
@@ -88,6 +94,7 @@ RCT_EXPORT_MODULE()
 }
 
 RCT_EXPORT_METHOD(login:(RCTResponseSenderBlock)completion) {
+  self.completion = completion;
   [[GPPSignIn sharedInstance] authenticate];
 }
 

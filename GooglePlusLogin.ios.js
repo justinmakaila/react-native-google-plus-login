@@ -17,12 +17,9 @@ var GooglePlusLogin = React.createClass({
   propTypes: {
     clientId: PropTypes.string,
     onLogin: PropTypes.func,
-    onLogout: PropTypes.func,
     onLoginFound: PropTypes.func,
     onLoginNotFound: PropTypes.func,
     onError: PropTypes.func,
-    onCancel: PropTypes.func,
-    onPermissionsMissing: PropTypes.func,
   },
 
   getInitialState: function () {
