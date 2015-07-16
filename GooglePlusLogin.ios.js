@@ -9,7 +9,6 @@ var {
 var ReactNativeViewAttributes = require('ReactNativeViewAttributes')
 var createReactNativeComponentClass = require('createReactNativeComponentClass')
 
-
 var GooglePlusLogin = React.createClass({
   statics: {
     Events: GooglePlusLoginManager.Events,
@@ -66,10 +65,7 @@ var GooglePlusLogin = React.createClass({
   },
 
   render: function() {
-    console.log(this.props)
-    console.log(GooglePlusLoginManager)
     GooglePlusLoginManager.setClientId(this.props.clientId)
-    //GooglePlusLoginManager.setClienId(this.props.clientId)
 
     return <RCTGooglePlusLogin {...this.props} />
   },
