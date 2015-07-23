@@ -25,7 +25,6 @@
 		7CF8B25D1B615A2800FAE14E /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF8B25A1B615A2800FAE14E /* GoogleOpenSource.framework */; };
 		7CF8B25E1B615A2800FAE14E /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7CF8B25B1B615A2800FAE14E /* GooglePlus.bundle */; };
 		7CF8B25F1B615A2800FAE14E /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF8B25C1B615A2800FAE14E /* GooglePlus.framework */; };
-		7CF8B2761B615C7F00FAE14E /* libRCTGooglePlusLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF8B23A1B615A0A00FAE14E /* libRCTGooglePlusLogin.a */; };
 		7CF8B2781B615D8900FAE14E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF8B2771B615D8900FAE14E /* SystemConfiguration.framework */; };
 		7CF8B27A1B615D8F00FAE14E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF8B2791B615D8F00FAE14E /* Security.framework */; };
 		7CF8B27C1B615D9A00FAE14E /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF8B27B1B615D9A00FAE14E /* MediaPlayer.framework */; };
@@ -110,9 +109,9 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RCTLinking;
 		};
-		7CF8B2391B615A0A00FAE14E /* PBXContainerItemProxy */ = {
+		7CE0E5D71B6166A400378C6F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7CF8B2331B615A0900FAE14E /* RCTGooglePlusLogin.xcodeproj */;
+			containerPortal = 7CE0E5D31B6166A400378C6F /* RCTGooglePlusLogin.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 7CECB4F21B57EE2A00B6A8A2;
 			remoteInfo = RCTGooglePlusLogin;
@@ -147,7 +146,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = iOS/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
-		7CF8B2331B615A0900FAE14E /* RCTGooglePlusLogin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTGooglePlusLogin.xcodeproj; path = "../../../ParentAppiOS/node_modules/react-native-google-plus-login/RCTGooglePlusLogin.xcodeproj"; sourceTree = "<group>"; };
+		7CE0E5D31B6166A400378C6F /* RCTGooglePlusLogin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTGooglePlusLogin.xcodeproj; path = ../../RCTGooglePlusLogin.xcodeproj; sourceTree = "<group>"; };
 		7CF8B25A1B615A2800FAE14E /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = "../../google-plus-sdk/GoogleOpenSource.framework"; sourceTree = "<group>"; };
 		7CF8B25B1B615A2800FAE14E /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = "../../google-plus-sdk/GooglePlus.bundle"; sourceTree = "<group>"; };
 		7CF8B25C1B615A2800FAE14E /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = "../../google-plus-sdk/GooglePlus.framework"; sourceTree = "<group>"; };
@@ -186,7 +185,6 @@
 				7CF8B27C1B615D9A00FAE14E /* MediaPlayer.framework in Frameworks */,
 				7CF8B27A1B615D8F00FAE14E /* Security.framework in Frameworks */,
 				7CF8B2781B615D8900FAE14E /* SystemConfiguration.framework in Frameworks */,
-				7CF8B2761B615C7F00FAE14E /* libRCTGooglePlusLogin.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				7CF8B25F1B615A2800FAE14E /* GooglePlus.framework in Frameworks */,
 				7CF8B25D1B615A2800FAE14E /* GoogleOpenSource.framework in Frameworks */,
@@ -309,10 +307,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7CF8B2341B615A0900FAE14E /* Products */ = {
+		7CE0E5D41B6166A400378C6F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7CF8B23A1B615A0A00FAE14E /* libRCTGooglePlusLogin.a */,
+				7CE0E5D81B6166A400378C6F /* libRCTGooglePlusLogin.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -340,7 +338,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				7CF8B2331B615A0900FAE14E /* RCTGooglePlusLogin.xcodeproj */,
+				7CE0E5D31B6166A400378C6F /* RCTGooglePlusLogin.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
 				00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */,
@@ -458,8 +456,8 @@
 					ProjectRef = 00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */;
 				},
 				{
-					ProductGroup = 7CF8B2341B615A0900FAE14E /* Products */;
-					ProjectRef = 7CF8B2331B615A0900FAE14E /* RCTGooglePlusLogin.xcodeproj */;
+					ProductGroup = 7CE0E5D41B6166A400378C6F /* Products */;
+					ProjectRef = 7CE0E5D31B6166A400378C6F /* RCTGooglePlusLogin.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302BC1ABCB91800DB3ED1 /* Products */;
@@ -566,11 +564,11 @@
 			remoteRef = 78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		7CF8B23A1B615A0A00FAE14E /* libRCTGooglePlusLogin.a */ = {
+		7CE0E5D81B6166A400378C6F /* libRCTGooglePlusLogin.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRCTGooglePlusLogin.a;
-			remoteRef = 7CF8B2391B615A0A00FAE14E /* PBXContainerItemProxy */;
+			remoteRef = 7CE0E5D71B6166A400378C6F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		832341B51AAA6A8300B99B32 /* libRCTText.a */ = {
