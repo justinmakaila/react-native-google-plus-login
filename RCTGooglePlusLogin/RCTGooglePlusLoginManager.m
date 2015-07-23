@@ -39,7 +39,6 @@ static NSString * const GooglePlusLoginErrorEvent = @"GooglePlusLoginErrorEvent"
 - (id)init {
   if (self = [super init]) {
     [self setupSignInProxy];
-
   }
   
   return self;
@@ -58,7 +57,15 @@ static NSString * const GooglePlusLoginErrorEvent = @"GooglePlusLoginErrorEvent"
   }
   else {
     // Convert GTMOAuth2Authentication into a JSON object
-    authData = auth.parameters;
+    authData = @{
+        @"accessToken": auth.accessToken,
+        @"refreshToken": auth.refreshToken,
+        @"expiresIn": auth.expiresIn,
+        @"errorString": auth.errorString,
+        @"expirationDate": auth.expirationDate,
+        @"userId": auth.userID,
+        @"userEmail": auth.userEmail
+    };
     
     [self fireEvent:LoginEvent withData:authData];
   }
