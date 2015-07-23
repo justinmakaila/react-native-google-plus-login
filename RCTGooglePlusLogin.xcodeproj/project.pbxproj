@@ -85,11 +85,11 @@
 		13B07FAE1A68108700A75B9A /* RCTGooglePlusLogin */ = {
 			isa = PBXGroup;
 			children = (
-				7CECB50F1B57F2BE00B6A8A2 /* Frameworks */,
 				7CECB5091B57EF1400B6A8A2 /* RCTGooglePlusLoginManager.h */,
 				7CECB50A1B57EF1400B6A8A2 /* RCTGooglePlusLoginManager.m */,
 				7CECB50C1B57EFD700B6A8A2 /* RCTGooglePlusLoginButton.h */,
 				7CECB50D1B57EFD700B6A8A2 /* RCTGooglePlusLoginButton.m */,
+				7CECB50F1B57F2BE00B6A8A2 /* Frameworks */,
 			);
 			name = RCTGooglePlusLogin;
 			sourceTree = "<group>";

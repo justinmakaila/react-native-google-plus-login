@@ -56,16 +56,20 @@ static NSString * const GooglePlusLoginErrorEvent = @"GooglePlusLoginErrorEvent"
     [self fireEvent:LoginErrorEvent withData:@{ @"description": error.localizedDescription }];
   }
   else {
-    // Convert GTMOAuth2Authentication into a JSON object
-    authData = @{
-        @"accessToken": auth.accessToken,
-        @"refreshToken": auth.refreshToken,
-        @"expiresIn": auth.expiresIn,
-        @"errorString": auth.errorString,
-        @"expirationDate": auth.expirationDate,
-        @"userId": auth.userID,
-        @"userEmail": auth.userEmail
-    };
+    authData = [@{
+      @"accessToken": auth.accessToken,
+      @"refreshToken": auth.refreshToken,
+      @"expiresIn": auth.expiresIn,
+      @"expirationDate": auth.expirationDate.description,
+    } mutableCopy];
+    
+    if (auth.userID) {
+      ((NSMutableDictionary *)authData)[@"userID"] = auth.userID;
+    }
+    
+    if (auth.userEmail) {
+      ((NSMutableDictionary *)authData)[@"userEmail"]= auth.userEmail;
+    }
     
     [self fireEvent:LoginEvent withData:authData];
   }
@@ -129,6 +133,9 @@ RCT_EXPORT_METHOD(loadCredentials:(RCTResponseSenderBlock)completion) {
   signInProxy.delegate = self;
   
   signInProxy.shouldFetchGooglePlusUser = YES;
+  signInProxy.shouldFetchGoogleUserEmail = YES;
+  signInProxy.shouldFetchGoogleUserID = YES;
+  
   signInProxy.clientID = self.clientId;
   
   signInProxy.scopes = @[kGTLAuthScopePlusLogin, @"profile"];

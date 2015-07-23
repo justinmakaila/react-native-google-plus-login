@@ -1,43 +1,38 @@
-var {
+const React = require('react-native');
+const {
   DeviceEventEmitter,
   NativeModules: {
     GooglePlusLoginManager,
   },
   PropTypes,
-} = require('react-native');
+} = React
 
-var ReactNativeViewAttributes = require('ReactNativeViewAttributes')
-var createReactNativeComponentClass = require('createReactNativeComponentClass')
+const ReactNativeViewAttributes = require('ReactNativeViewAttributes')
+const createReactNativeComponentClass = require('createReactNativeComponentClass')
 
-var GooglePlusLogin = React.createClass({
-  statics: {
-    Events: GooglePlusLoginManager.Events,
-  },
+console.log("YOOOO")
 
-  propTypes: {
-    clientId: PropTypes.string,
-    onLogin: PropTypes.func,
-    onLoginFound: PropTypes.func,
-    onLoginNotFound: PropTypes.func,
-    onError: PropTypes.func,
-  },
+module.exports = class GooglePlusLogin extends React.Component {
+  constructor(props) {
+    super(props)
 
-  getInitialState: function () {
-    return {
+    this.state = {
       credentials: null,
       subscriptions: [],
     }
-  },
+  }
 
-  componentWillMount: function () {
-    var _this = this
-    var subscriptions = _this.state.subscriptions
+  componentWillMount() {
+    const {
+      subscriptions
+    } = this.state
+
     var events = GooglePlusLoginManager.Events
 
     // Create a listener and call the event handler from props for each event supplied by the GooglePlusLoginManager
-    Object.keys(events).forEach(function (event) {
+    Object.keys(events).forEach(event => {
       const subscription = DeviceEventEmitter.addListener(events[event], (eventData) => {
-        var eventHandler = _this.props["on" + event]
+        var eventHandler = this.props["on" + event]
         eventHandler && eventHandler(eventData)
       })
 
@@ -46,34 +41,38 @@ var GooglePlusLogin = React.createClass({
 
     // Set the subscriptions
     this.setState({ subscriptions: subscriptions })
-  },
+  }
 
-  componentWillUnmount: function () {
+  componentWillUnmount() {
     // Remove each listener
-    var subscriptions = this.state.subscriptions
+    const {
+      subscriptions
+    } = this.state
 
     subscriptions.forEach(function (subscription) {
       subscription.remove()
     })
-  },
+  }
 
-  componentDidMount: function() {
+  componentDidMount() {
     // TODO: Attempt to load credentials
-  },
+  }
 
-  render: function() {
-    GooglePlusLoginManager.setClientId(this.props.clientId)
+  render() {
+    const {
+      clientId
+    } = this.props
+
+    GooglePlusLoginManager.setClientId(clientId)
 
     return <RCTGooglePlusLogin {...this.props} />
-  },
-})
+  }
+}
 
-var RCTGooglePlusLogin = createReactNativeComponentClass({
+const RCTGooglePlusLogin = createReactNativeComponentClass({
   validAttributes: {
     ...ReactNativeViewAttributes.UIView,
     permissions: true,
   },
   uiViewClassName: 'RCTGooglePlusLogin',
 })
-
-module.exports = GooglePlusLogin
