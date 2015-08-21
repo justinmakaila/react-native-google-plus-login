@@ -1,11 +1,24 @@
 {
   "name": "react-native-google-plus-login",
-  "version": "0.0.8",
+  "version": "0.0.9",
+  "description": "A Google+ login manager and <GooglePlusLoginButton /> for react-native",
   "main": "GooglePlusLogin.ios.js",
+  "author": "Justin Makaila <justinmakaila@gmail.com> (https://github.com/justinmakaila)",
   "scripts": {
     "start": "node_modules/react-native/packager/packager.sh"
   },
-  "peerDependencies": {
-    "react-native": ">=0.7.1"
+  "files": [
+  	"google-plus-sdk/GooglePlus.framework",
+  	"google-plus-sdk/GoogleOpenSource.framework",
+  	"google-plus-sdk/GooglePlus.bundle",
+  	"RCTGooglePlusLogin.xcodeproj",
+  	"RCTGooglePlusLogin/RCTGooglePlusLoginButton.h",
+  	"RCTGooglePlusLogin/RCTGooglePlusLoginButton.m",
+  	"RCTGooglePlusLogin/RCTGooglePlusLoginManager.h",
+  	"RCTGooglePlusLogin/RCTGooglePlusLoginManager.m"
+  ],
+  "repository": {
+  	"type": "git",
+  	"url": "git@github.com:justinmakaila/react-native-google-plus-login"
   }
 }
