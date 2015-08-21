@@ -10,8 +10,6 @@ const {
 const ReactNativeViewAttributes = require('ReactNativeViewAttributes')
 const createReactNativeComponentClass = require('createReactNativeComponentClass')
 
-console.log("YOOOO")
-
 module.exports = class GooglePlusLogin extends React.Component {
   constructor(props) {
     super(props)
@@ -27,7 +25,7 @@ module.exports = class GooglePlusLogin extends React.Component {
       subscriptions
     } = this.state
 
-    var events = GooglePlusLoginManager.Events
+    const events = GooglePlusLoginManager.Events
 
     // Create a listener and call the event handler from props for each event supplied by the GooglePlusLoginManager
     Object.keys(events).forEach(event => {
