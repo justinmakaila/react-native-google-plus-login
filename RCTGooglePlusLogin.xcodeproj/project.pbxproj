@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7CC490DB1B87883400538501 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC490D81B87883400538501 /* GoogleOpenSource.framework */; };
+		7CC490DC1B87883400538501 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC490DA1B87883400538501 /* GooglePlus.framework */; };
 		7CECB50B1B57EF1400B6A8A2 /* RCTGooglePlusLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CECB50A1B57EF1400B6A8A2 /* RCTGooglePlusLoginManager.m */; };
 		7CECB50E1B57EFD700B6A8A2 /* RCTGooglePlusLoginButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CECB50D1B57EFD700B6A8A2 /* RCTGooglePlusLoginButton.m */; };
-		7CECB5131B57F2CC00B6A8A2 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CECB5101B57F2CC00B6A8A2 /* GoogleOpenSource.framework */; };
-		7CECB5141B57F2CD00B6A8A2 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CECB5121B57F2CC00B6A8A2 /* GooglePlus.framework */; };
 		7CECB5331B58089500B6A8A2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CECB5321B58089500B6A8A2 /* CoreLocation.framework */; };
 		7CECB5351B58089A00B6A8A2 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CECB5341B58089A00B6A8A2 /* CoreMotion.framework */; };
 		7CECB5371B58089D00B6A8A2 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CECB5361B58089D00B6A8A2 /* AddressBook.framework */; };
@@ -37,14 +37,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7CC490D81B87883400538501 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = "google-plus-sdk/GoogleOpenSource.framework"; sourceTree = "<group>"; };
+		7CC490D91B87883400538501 /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = "google-plus-sdk/GooglePlus.bundle"; sourceTree = "<group>"; };
+		7CC490DA1B87883400538501 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = "google-plus-sdk/GooglePlus.framework"; sourceTree = "<group>"; };
 		7CECB4F21B57EE2A00B6A8A2 /* libRCTGooglePlusLogin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRCTGooglePlusLogin.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CECB5091B57EF1400B6A8A2 /* RCTGooglePlusLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTGooglePlusLoginManager.h; path = RCTGooglePlusLogin/RCTGooglePlusLoginManager.h; sourceTree = "<group>"; };
 		7CECB50A1B57EF1400B6A8A2 /* RCTGooglePlusLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTGooglePlusLoginManager.m; path = RCTGooglePlusLogin/RCTGooglePlusLoginManager.m; sourceTree = "<group>"; };
 		7CECB50C1B57EFD700B6A8A2 /* RCTGooglePlusLoginButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTGooglePlusLoginButton.h; path = RCTGooglePlusLogin/RCTGooglePlusLoginButton.h; sourceTree = "<group>"; };
 		7CECB50D1B57EFD700B6A8A2 /* RCTGooglePlusLoginButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTGooglePlusLoginButton.m; path = RCTGooglePlusLogin/RCTGooglePlusLoginButton.m; sourceTree = "<group>"; };
-		7CECB5101B57F2CC00B6A8A2 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = "google-plus-sdk/GoogleOpenSource.framework"; sourceTree = "<group>"; };
-		7CECB5111B57F2CC00B6A8A2 /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = "google-plus-sdk/GooglePlus.bundle"; sourceTree = "<group>"; };
-		7CECB5121B57F2CC00B6A8A2 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = "google-plus-sdk/GooglePlus.framework"; sourceTree = "<group>"; };
 		7CECB5321B58089500B6A8A2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7CECB5341B58089A00B6A8A2 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		7CECB5361B58089D00B6A8A2 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
@@ -68,14 +68,14 @@
 				7CECB5431B5808E000B6A8A2 /* MediaPlayer.framework in Frameworks */,
 				7CECB5411B5808D600B6A8A2 /* CoreText.framework in Frameworks */,
 				7CECB53F1B5808D200B6A8A2 /* CoreGraphics.framework in Frameworks */,
+				7CC490DC1B87883400538501 /* GooglePlus.framework in Frameworks */,
 				7CECB53D1B5808AE00B6A8A2 /* Foundation.framework in Frameworks */,
 				7CECB53B1B5808A600B6A8A2 /* UIKit.framework in Frameworks */,
 				7CECB5391B5808A200B6A8A2 /* AssetsLibrary.framework in Frameworks */,
 				7CECB5371B58089D00B6A8A2 /* AddressBook.framework in Frameworks */,
 				7CECB5351B58089A00B6A8A2 /* CoreMotion.framework in Frameworks */,
+				7CC490DB1B87883400538501 /* GoogleOpenSource.framework in Frameworks */,
 				7CECB5331B58089500B6A8A2 /* CoreLocation.framework in Frameworks */,
-				7CECB5131B57F2CC00B6A8A2 /* GoogleOpenSource.framework in Frameworks */,
-				7CECB5141B57F2CD00B6A8A2 /* GooglePlus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +97,9 @@
 		7CECB50F1B57F2BE00B6A8A2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7CC490D81B87883400538501 /* GoogleOpenSource.framework */,
+				7CC490D91B87883400538501 /* GooglePlus.bundle */,
+				7CC490DA1B87883400538501 /* GooglePlus.framework */,
 				7CECB5461B5808ED00B6A8A2 /* SystemConfiguration.framework */,
 				7CECB5441B5808E500B6A8A2 /* Security.framework */,
 				7CECB5421B5808E000B6A8A2 /* MediaPlayer.framework */,
@@ -108,9 +111,6 @@
 				7CECB5361B58089D00B6A8A2 /* AddressBook.framework */,
 				7CECB5341B58089A00B6A8A2 /* CoreMotion.framework */,
 				7CECB5321B58089500B6A8A2 /* CoreLocation.framework */,
-				7CECB5101B57F2CC00B6A8A2 /* GoogleOpenSource.framework */,
-				7CECB5111B57F2CC00B6A8A2 /* GooglePlus.bundle */,
-				7CECB5121B57F2CC00B6A8A2 /* GooglePlus.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
