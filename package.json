@@ -4,9 +4,6 @@
   "description": "A Google+ login manager and <GooglePlusLoginButton /> for react-native",
   "main": "GooglePlusLogin.ios.js",
   "author": "Justin Makaila <justinmakaila@gmail.com> (https://github.com/justinmakaila)",
-  "scripts": {
-    "start": "node_modules/react-native/packager/packager.sh"
-  },
   "files": [
   	"google-plus-sdk/GooglePlus.framework",
   	"google-plus-sdk/GoogleOpenSource.framework",
