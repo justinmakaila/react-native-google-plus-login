@@ -44,10 +44,6 @@ static NSString * const GooglePlusLoginErrorEvent = @"GooglePlusLoginErrorEvent"
   return self;
 }
 
-- (UIView *)view {
-  return [[RCTGooglePlusLoginButton alloc] init];
-}
-
 - (void)signIn:(GIDSignIn *)signIn didSignInForUser:(GIDGoogleUser *)user withError:(NSError *)error {
   // TODO: Handle a signed in user
   id errorObject = (error) ? error : [NSNull null];
@@ -122,7 +118,6 @@ RCT_EXPORT_METHOD(setClientId:(NSString *)clientId) {
 }
 
 RCT_EXPORT_METHOD(loadCredentials:(RCTResponseSenderBlock)completion) {
-  //GTMOAuth2Authentication *authData = [[GPPSignIn sharedInstance] authentication];
   GIDSignIn *signInProxy = [GIDSignIn sharedInstance];
   if (signInProxy.currentUser) {
     [self signIn:signInProxy didSignInForUser:signInProxy.currentUser withError:nil];
