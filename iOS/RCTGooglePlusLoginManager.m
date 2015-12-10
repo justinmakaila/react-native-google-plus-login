@@ -50,6 +50,7 @@ static NSString * const GooglePlusLoginErrorEvent = @"GooglePlusLoginErrorEvent"
 
 - (void)signIn:(GIDSignIn *)signIn didSignInForUser:(GIDGoogleUser *)user withError:(NSError *)error {
   // TODO: Handle a signed in user
+  id errorObject = (error) ? error : [NSNull null];
   id authData = [NSNull null];
 
   if (error) {
@@ -57,11 +58,11 @@ static NSString * const GooglePlusLoginErrorEvent = @"GooglePlusLoginErrorEvent"
       @"description": error.localizedDescription
     }];
   } else {
-    GIDAuthentication *authData = user.authentication;
+    GIDAuthentication *authentication = user.authentication;
     authData = [@{
-      @"accessToken": authData.accessToken,
-      @"refreshToken": authData.refreshToken,
-      @"expirationDate": authData.accessTokenExpirationDate.description,
+      @"accessToken": authentication.accessToken,
+      @"refreshToken": authentication.refreshToken,
+      @"expirationDate": authentication.accessTokenExpirationDate.description,
       @"userID": user.userID,
     } mutableCopy];
 
@@ -112,7 +113,7 @@ RCT_EXPORT_MODULE()
 
 RCT_EXPORT_METHOD(login:(RCTResponseSenderBlock)completion) {
   self.completion = completion;
-  [[GPPSignIn sharedInstance] authenticate];
+  [[GIDSignIn sharedInstance] signIn];
 }
 
 RCT_EXPORT_METHOD(setClientId:(NSString *)clientId) {
@@ -121,13 +122,15 @@ RCT_EXPORT_METHOD(setClientId:(NSString *)clientId) {
 }
 
 RCT_EXPORT_METHOD(loadCredentials:(RCTResponseSenderBlock)completion) {
-  GTMOAuth2Authentication *authData = [[GPPSignIn sharedInstance] authentication];
-  if (authData) {
-    [self fireEvent:LoginFoundEvent withData:authData.properties];
-    completion(@[[NSNull null], authData]);
-  }
-  else {
-    [self fireEvent:LoginErrorEvent withData:@{ @"description": @"Could not load credentials" }];
+  //GTMOAuth2Authentication *authData = [[GPPSignIn sharedInstance] authentication];
+  GIDSignIn *signInProxy = [GIDSignIn sharedInstance];
+  if (signInProxy.currentUser) {
+    [self signIn:signInProxy didSignInForUser:signInProxy.currentUser withError:nil];
+  } else {
+    [self fireEvent:LoginErrorEvent withData:@{
+      @"description": @"Could not load credentials"
+    }];
+
     completion(@[@"Could not load credentials"]);
   }
 }
@@ -141,7 +144,7 @@ RCT_EXPORT_METHOD(loadCredentials:(RCTResponseSenderBlock)completion) {
 
   signInProxy.clientID = self.clientId;
 
-  signInProxy.scopes = @[kGTLAuthScopePlusLogin, @"profile", @"email"];
+  signInProxy.scopes = @[@"profile", @"email"];
 }
 
 @end
