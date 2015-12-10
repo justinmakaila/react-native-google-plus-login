@@ -134,11 +134,27 @@ RCT_EXPORT_METHOD(loadCredentials:(RCTResponseSenderBlock)completion) {
 - (void)setupSignInProxy {
   GIDSignIn *signInProxy = [GIDSignIn sharedInstance];
   signInProxy.delegate = self;
+  signInProxy.uiDelegate = self;
+
   signInProxy.shouldFetchBasicProfile = YES;
-
   signInProxy.clientID = self.clientId;
-
   signInProxy.scopes = @[@"profile", @"email"];
+}
+
+#pragma mark - GIDSignInUIDelegate
+
+// If implemented, this method will be invoked when sign in needs to display a view controller.
+// The view controller should be displayed modally (via UIViewController's |presentViewController|
+// method, and not pushed unto a navigation controller's stack.
+- (void)signIn:(GIDSignIn *)signIn presentViewController:(UIViewController *)viewController {
+  [[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:viewController];
+}
+
+// If implemented, this method will be invoked when sign in needs to dismiss a view controller.
+// Typically, this should be implemented by calling |dismissViewController| on the passed
+// view controller.
+- (void)signIn:(GIDSignIn *)signIn dismissViewController:(UIViewController *)viewController {
+  [viewController dismissViewController];
 }
 
 @end
