@@ -143,18 +143,12 @@ RCT_EXPORT_METHOD(loadCredentials:(RCTResponseSenderBlock)completion) {
 
 #pragma mark - GIDSignInUIDelegate
 
-// If implemented, this method will be invoked when sign in needs to display a view controller.
-// The view controller should be displayed modally (via UIViewController's |presentViewController|
-// method, and not pushed unto a navigation controller's stack.
 - (void)signIn:(GIDSignIn *)signIn presentViewController:(UIViewController *)viewController {
-  [[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:viewController];
+  [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:viewController animated:YES completion:nil];
 }
 
-// If implemented, this method will be invoked when sign in needs to dismiss a view controller.
-// Typically, this should be implemented by calling |dismissViewController| on the passed
-// view controller.
 - (void)signIn:(GIDSignIn *)signIn dismissViewController:(UIViewController *)viewController {
-  [viewController dismissViewController];
+  [viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
