@@ -8,7 +8,6 @@
 
 
 #import "RCTGooglePlusLoginManager.h"
-#import "RCTGooglePlusLoginButton.h"
 
 #import "RCTBridgeModule.h"
 #import "RCTBridge.h"

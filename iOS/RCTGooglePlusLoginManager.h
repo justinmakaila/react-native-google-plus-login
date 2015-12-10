@@ -11,6 +11,6 @@
 
 #import "RCTViewManager.h"
 
-@interface RCTGooglePlusLoginManager : RCTViewManager <GPPSignInDelegate>
+@interface RCTGooglePlusLoginManager : RCTViewManager <GIDSignInDelegate>
 
 @end
