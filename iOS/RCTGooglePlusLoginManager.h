@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <GooglePlus/GooglePlus.h>
+#import <GoogleSignIn/GoogleSignIn.h>
 
 #import "RCTViewManager.h"
 

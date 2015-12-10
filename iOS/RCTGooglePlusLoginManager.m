@@ -14,7 +14,7 @@
 #import "RCTBridge.h"
 #import "RCTEventDispatcher.h"
 
-#import <GoogleOpenSource/GoogleOpenSource.h>
+#import <GoogleSignIn/GoogleSignIn.h>
 
 static NSString * const LoginEvent = @"Login";
 static NSString * const LoginFoundEvent = @"LoginFound";
@@ -40,7 +40,7 @@ static NSString * const GooglePlusLoginErrorEvent = @"GooglePlusLoginErrorEvent"
   if (self = [super init]) {
     [self setupSignInProxy];
   }
-  
+
   return self;
 }
 
@@ -48,36 +48,42 @@ static NSString * const GooglePlusLoginErrorEvent = @"GooglePlusLoginErrorEvent"
   return [[RCTGooglePlusLoginButton alloc] init];
 }
 
-- (void)finishedWithAuth:(GTMOAuth2Authentication *)auth error:(NSError *)error {
-  id errorObject = (error) ? error : [NSNull null];
+- (void)signIn:(GIDSignIn *)signIn didSignInForUser:(GIDGoogleUser *)user withError:(NSError *)error {
+  // TODO: Handle a signed in user
   id authData = [NSNull null];
-  
+
   if (error) {
-    [self fireEvent:LoginErrorEvent withData:@{ @"description": error.localizedDescription }];
-  }
-  else {
+    [self fireEvent:LoginErrorEvent withData:@{
+      @"description": error.localizedDescription
+    }];
+  } else {
+    GIDAuthentication *authData = user.authentication;
     authData = [@{
-      @"accessToken": auth.accessToken,
-      @"refreshToken": auth.refreshToken,
-      @"expiresIn": auth.expiresIn,
-      @"expirationDate": auth.expirationDate.description,
+      @"accessToken": authData.accessToken,
+      @"refreshToken": authData.refreshToken,
+      @"expirationDate": authData.accessTokenExpirationDate.description,
+      @"userID": user.userID,
     } mutableCopy];
-    
-    if (auth.userID) {
-      ((NSMutableDictionary *)authData)[@"userID"] = auth.userID;
+
+    if (user.profile) {
+      GIDProfileData *profileData = user.profile;
+
+      if (profileData.email) {
+        ((NSMutableDictionary *)authData)[@"userEmail"] = profileData.email;
+      }
+
+      if (profileData.name) {
+        ((NSMutableDictionary *)authData)[@"name"] = profileData.name;
+      }
     }
-    
-    if (auth.userEmail) {
-      ((NSMutableDictionary *)authData)[@"userEmail"]= auth.userEmail;
-    }
-    
+
     [self fireEvent:LoginEvent withData:authData];
   }
-  
+
   if (self.completion) {
     self.completion(@[errorObject, authData]);
   }
-    
+
   self.completion = nil;
 }
 
@@ -89,7 +95,7 @@ RCT_EXPORT_MODULE()
     LoginErrorEvent: GooglePlusLoginErrorEvent,
     LoginFoundEvent: GooglePlusLoginFoundEvent,
   };
-  
+
   return @{
     @"Events": events
   };
@@ -129,16 +135,13 @@ RCT_EXPORT_METHOD(loadCredentials:(RCTResponseSenderBlock)completion) {
 #pragma mark - Setup
 
 - (void)setupSignInProxy {
-  GPPSignIn *signInProxy = [GPPSignIn sharedInstance];
+  GIDSignIn *signInProxy = [GIDSignIn sharedInstance];
   signInProxy.delegate = self;
-  
-  signInProxy.shouldFetchGooglePlusUser = YES;
-  signInProxy.shouldFetchGoogleUserEmail = YES;
-  signInProxy.shouldFetchGoogleUserID = YES;
-  
+  signInProxy.shouldFetchBasicProfile = YES;
+
   signInProxy.clientID = self.clientId;
-  
-  signInProxy.scopes = @[kGTLAuthScopePlusLogin, @"profile"];
+
+  signInProxy.scopes = @[kGTLAuthScopePlusLogin, @"profile", @"email"];
 }
 
 @end
